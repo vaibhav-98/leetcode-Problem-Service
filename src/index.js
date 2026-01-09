@@ -16,6 +16,10 @@ app.get('/ping', (req,res) => {
     return res.json({message: 'server is alive '})
 })
 
+
+// last moddleware if any error comes
+app.use(errorHandler)
+
 app.listen(PORT, () => {
     console.log(`Server running at PORT: ${PORT}`);
 })
