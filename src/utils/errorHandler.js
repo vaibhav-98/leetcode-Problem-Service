@@ -1,4 +1,4 @@
-const BaseError = require("../errors/base.errror")
+const BaseError = require("../errors/baseError")
 const { StatusCodes } =  require('http-status-codes')
 
 
