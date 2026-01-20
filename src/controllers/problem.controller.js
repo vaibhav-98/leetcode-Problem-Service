@@ -1,8 +1,8 @@
 const { StatusCodes } = require('http-status-codes')
-//const NotImplementError = require('../errors/NotImplemented.error')
+const NotImplementError = require('../errors/NotImplemented.error')
 const { ProblemService } = require('../services')
 const { ProblemRepository } = require('../repositories')
-//const { error } = require('winston')
+const { error } = require('winston')
 
 const problemService = new ProblemService ( new ProblemRepository())
 
@@ -67,21 +67,21 @@ async function getProblem(req,res,next) {
 
 
 
-// async function deleteProblem(req,res,next) {
+async function deleteProblem(req,res,next) {
 
-//    try {
-//       const response = await problemService.deleteProblem(req.params.id);
-//         return res.status(StatusCodes.OK).json({
-//             success: true,
-//             message: "Successfully deleted problem by id ",
-//             error: {},
-//             data: response
+   try {
+      const response = await problemService.deleteProblem(req.params.id);
+        return res.status(StatusCodes.OK).json({
+            success: true,
+            message: "Successfully deleted problem by id ",
+            error: {},
+            data: response
 
-//         })
-//    } catch (error) {
-//       next(error)
-//    }
-// }
+        })
+   } catch (error) {
+      next(error)
+   }
+}
 
 // function updateProblem(req,res) {
 //     return res.status(StatusCodes.NOT_IMPLEMENTED).json({
@@ -96,7 +96,7 @@ module.exports = {
     addProblem,
      getProblems,
      getProblem,
-    // deleteProblem,
+     deleteProblem,
     // updateProblem,
     pingProblemController
 }
